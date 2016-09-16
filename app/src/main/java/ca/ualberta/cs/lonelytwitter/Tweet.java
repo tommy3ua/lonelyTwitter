@@ -11,7 +11,7 @@ public abstract class Tweet
     private String message;
     private Date date;
 
-    ArrayList<Mood> moods;
+    private ArrayList<Mood> moods;
 
     public Tweet (String message)
     {
