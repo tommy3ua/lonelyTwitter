@@ -56,5 +56,10 @@ public abstract class Tweet
         this.moods = moods;
     }
 
+    @Override
+    public String toString(){
+        return message;
+    }
+
     public abstract Boolean isImportant();
 }
