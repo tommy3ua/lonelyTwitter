@@ -3,7 +3,12 @@ package ca.ualberta.cs.lonelytwitter;
 import java.util.Date;
 
 /**
- * Created by watts1 on 9/15/16.
+ *  The abstract Tweet class that must be implemented. Contains a message and a date.
+ *  @author Tommy
+ *  @since 1.4
+ *  @see Tweetable
+ *  @see NormalTweet
+ *  @see ImportantTweet
  */
 public abstract class Tweet implements Tweetable {
     private String message;
@@ -24,10 +29,19 @@ public abstract class Tweet implements Tweetable {
         return message;
     }
 
+    /**
+     * Distinguishes between NormalTweet and ImportantTweet
+     * @return Boolean
+     * @see NormalTweet
+     * @see ImportantTweet
+     */
     public abstract Boolean isImportant();
 
-
-
+    /**
+     *
+     * @param message
+     * @throws TweetTooLongException
+     */
     public void setMessage(String message) throws TweetTooLongException {
         if (message.length() > 140){
             //Do Something!

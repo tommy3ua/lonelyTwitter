@@ -3,7 +3,11 @@ package ca.ualberta.cs.lonelytwitter;
 import java.util.ArrayList;
 
 /**
- * Created by makepeac on 9/29/16.
+ * List of Tweets to be displayed in a view.
+ * @author Tommy
+ * @since 1.4
+ * @see Tweet
+ * @see LonelyTwitterActivity
  */
 public class TweetList {
     private ArrayList<Tweet> tweets = new ArrayList<Tweet>();

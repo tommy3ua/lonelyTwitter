@@ -1,7 +1,10 @@
 package ca.ualberta.cs.lonelytwitter;
 
 /**
- * Created by watts1 on 9/15/16.
+ * An implementation of Tweet to be used for important tweets,
+ * @author Tommy
+ * @since 1.4
+ * @see Tweet
  */
 public class ImportantTweet extends Tweet{
 
@@ -9,6 +12,11 @@ public class ImportantTweet extends Tweet{
         super(message);
     }
 
+    /**
+     * Returns true to distinguish it from a NormalTweet.
+     * @return Boolean
+     * @see NormalTweet
+     */
     @Override
     public Boolean isImportant(){
         return Boolean.TRUE;
