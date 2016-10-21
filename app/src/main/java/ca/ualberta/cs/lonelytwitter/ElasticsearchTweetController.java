@@ -54,6 +54,38 @@ public class ElasticsearchTweetController {
         }
     }
 
+    // TODO we need a function that searches tweets!
+    public static class SearchTweetsTask extends AsyncTask<String, Void, ArrayList<NormalTweet>> {
+        @Override
+        protected ArrayList<NormalTweet> doInBackground(String... search_parameters) {
+            verifySettings();
+
+            ArrayList<NormalTweet> tweets = new ArrayList<NormalTweet>();
+
+            Search search = (Search) new Search.Builder(search_parameters[0])
+                    // multiple index or types can be added.
+                    .addIndex("articles")
+                    .addType("article")
+                    .build();
+
+            try {
+                SearchResult result = client.execute(search);
+                if (result.isSucceeded()) {
+                    List<NormalTweet> foundTweets = result.getSourceAsObjectList(NormalTweet.class);
+                    tweets.addAll(foundTweets);
+                }
+                else {
+                    Log.i("Error", "The search query failed to find any tweets that matched.");
+                }
+            }
+            catch (Exception e) {
+                Log.i("Error", "Something went wrong when we tried to communicate with the elasticsearch server!");
+            }
+
+            return tweets;
+        }
+    }
+
 
     // TODO we need a function which adds a tweet!
     public static class AddTweetsTask extends AsyncTask<NormalTweet, Void, Void> {
